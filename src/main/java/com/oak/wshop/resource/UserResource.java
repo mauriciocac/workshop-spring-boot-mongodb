@@ -26,11 +26,12 @@ public class UserResource {
 		return ResponseEntity.ok().body(list);
 	}
 
-//	@GetMapping
-//	public ResponseEntity<List<UserDTO>> listAll() {
-//		List<User> list = service.findAll();
-//		List<UserDTO> listDTO = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
-//		return ResponseEntity.ok().body(listDTO);
-//	}
+	@GetMapping
+	@RequestMapping(value="usuarios")
+	public ResponseEntity<List<UserDTO>> listarTodos() {
+		List<User> list = service.findAll();
+		List<UserDTO> listDTO = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
+	}
 
 }

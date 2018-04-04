@@ -37,4 +37,9 @@ public class UserService {
 	public User insert(User obj) {
 		return repository.insert(obj);
 	}
+	
+	public void delete(String id) {
+		findByID(id);
+		repository.deleteById(id);
+	}
 }

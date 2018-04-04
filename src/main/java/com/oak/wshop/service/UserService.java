@@ -1,12 +1,14 @@
 package com.oak.wshop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oak.wshop.model.User;
 import com.oak.wshop.repository.UserRepository;
+import com.oak.wshop.service.exception.ObjectNotFoundException;
 
 @Service
 public class UserService {
@@ -16,6 +18,15 @@ public class UserService {
 
 	public List<User> findAll() {
 		return repository.findAll();
+	}
+
+	public Optional<User> findByID(String id) {
+		Optional<User> user = repository.findById(id);
+		if (user == null) {
+			throw new ObjectNotFoundException("Objeto não encontrado");
+		}
+		return user;
+
 	}
 
 }

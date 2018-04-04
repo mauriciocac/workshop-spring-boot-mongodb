@@ -1,6 +1,7 @@
 package com.oak.wshop.dto;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import com.oak.wshop.model.User;
 
@@ -14,12 +15,13 @@ public class UserDTO implements Serializable {
 	public UserDTO() {
 	}
 
+ 
 	public UserDTO(User user) {
 		id = user.getId();
 		nome = user.getNome();
 		email = user.getEmail();
 	}
-
+	
 	public String getId() {
 		return id;
 	}

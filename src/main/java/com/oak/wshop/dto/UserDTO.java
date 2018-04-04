@@ -1,7 +1,6 @@
 package com.oak.wshop.dto;
 
 import java.io.Serializable;
-import java.util.Optional;
 
 import com.oak.wshop.model.User;
 

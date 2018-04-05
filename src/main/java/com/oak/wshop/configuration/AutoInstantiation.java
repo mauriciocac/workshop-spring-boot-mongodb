@@ -16,7 +16,7 @@ import com.oak.wshop.repository.UserRepository;
 
 @Configuration
 public class AutoInstantiation implements CommandLineRunner {
-	
+
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
@@ -27,7 +27,7 @@ public class AutoInstantiation implements CommandLineRunner {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:MM:ss");
 		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-		
+
 		userRepository.deleteAll();
 		postRepository.deleteAll();
 
@@ -41,11 +41,15 @@ public class AutoInstantiation implements CommandLineRunner {
 
 		userRepository.saveAll(Arrays.asList(mau, aidil, mari, fran, jhes, gil, joao));
 
-		
-		Post post1 = new Post(null, sdf.parse("21/03/2018 21:10:25"), "Partiu Viagem!", "Irei viajar para Santos.", new AuthorDTO(aidil));
-		Post post2 = new Post(null, sdf.parse("21/03/2018 21:10:30"), "Bom dia!", "Acordei muito feliz hoje.", new AuthorDTO(aidil));
+		Post post1 = new Post(null, sdf.parse("21/03/2018 21:10:25"), "Partiu Viagem!", "Irei viajar para Santos.",
+				new AuthorDTO(aidil));
+		Post post2 = new Post(null, sdf.parse("21/03/2018 21:10:30"), "Bom dia!", "Acordei muito feliz hoje.",
+				new AuthorDTO(aidil));
 
 		postRepository.saveAll(Arrays.asList(post1, post2));
+
+		aidil.getPosts().addAll(Arrays.asList(post1, post2));
+		userRepository.save(aidil);
 	}
 
 }

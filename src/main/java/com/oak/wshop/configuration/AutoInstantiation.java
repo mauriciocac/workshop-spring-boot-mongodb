@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.oak.wshop.dto.AuthorDTO;
 import com.oak.wshop.model.Post;
 import com.oak.wshop.model.User;
 import com.oak.wshop.repository.PostRepository;
@@ -15,6 +16,7 @@ import com.oak.wshop.repository.UserRepository;
 
 @Configuration
 public class AutoInstantiation implements CommandLineRunner {
+	
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
@@ -22,6 +24,10 @@ public class AutoInstantiation implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:MM:ss");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+		
 		userRepository.deleteAll();
 		postRepository.deleteAll();
 
@@ -31,13 +37,13 @@ public class AutoInstantiation implements CommandLineRunner {
 		User mau = new User(null, "Mauricio Carvalho", "mauricio.cac@hotmail.com");
 		User jhes = new User(null, "Jhessilly Alvim", "jhessilly.alvim@hotmail.com");
 		User gil = new User(null, "Gil Alvim", "gil.alvim@hotmail.com");
+		User joao = new User(null, "Joao Alvim", "joao.alvim@hotmail.com");
 
-		userRepository.saveAll(Arrays.asList(mau, aidil, mari, fran, jhes, gil));
+		userRepository.saveAll(Arrays.asList(mau, aidil, mari, fran, jhes, gil, joao));
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:MM:ss");
-		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-		Post post1 = new Post(null, sdf.parse("21/03/2018 21:10:25"), "Partiu Viagem!", "Irei viajar para Santos.", aidil);
-		Post post2 = new Post(null, sdf.parse("21/03/2018 21:10:30"), "Bom dia!", "Acordei muito feliz hoje.", aidil);
+		
+		Post post1 = new Post(null, sdf.parse("21/03/2018 21:10:25"), "Partiu Viagem!", "Irei viajar para Santos.", new AuthorDTO(aidil));
+		Post post2 = new Post(null, sdf.parse("21/03/2018 21:10:30"), "Bom dia!", "Acordei muito feliz hoje.", new AuthorDTO(aidil));
 
 		postRepository.saveAll(Arrays.asList(post1, post2));
 	}

@@ -23,11 +23,11 @@ public class UserService {
 
 	public Optional<User> findByID(String id) {
 		Optional<User> user = repository.findById(id);
+ 
 		if (user == null) {
 			throw new ObjectNotFoundException("Objeto não encontrado");
 		}
 		return user;
-
 	}
 
 	public User fromDTO(UserDTO objDTO) {
@@ -37,9 +37,10 @@ public class UserService {
 	public User insert(User obj) {
 		return repository.insert(obj);
 	}
-	
+
 	public void delete(String id) {
 		findByID(id);
 		repository.deleteById(id);
 	}
+
 }

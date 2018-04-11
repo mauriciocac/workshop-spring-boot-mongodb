@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import com.oak.wshop.dto.AuthorDTO;
+import com.oak.wshop.model.CommentDTO;
 import com.oak.wshop.model.Post;
 import com.oak.wshop.model.User;
 import com.oak.wshop.repository.PostRepository;
@@ -45,6 +46,12 @@ public class AutoInstantiation implements CommandLineRunner {
 				new AuthorDTO(aidil));
 		Post post2 = new Post(null, sdf.parse("21/03/2018 21:10:30"), "Bom dia!", "Acordei muito feliz hoje.",
 				new AuthorDTO(aidil));
+
+		CommentDTO c1 = new CommentDTO("Boa viagem mano!", sdf.parse("21/03/2018 20:10:25"), new AuthorDTO(mau));
+		CommentDTO c2 = new CommentDTO("Aproveite!!!", sdf.parse("23/03/2018 11:10:25"), new AuthorDTO(fran));
+		CommentDTO c3 = new CommentDTO("Aproveite huhuu!!!", sdf.parse("22/03/2018 22:10:25"), new AuthorDTO(mau));
+		post1.getComments().addAll(Arrays.asList(c1, c2));
+		post2.getComments().addAll(Arrays.asList(c3));
 
 		postRepository.saveAll(Arrays.asList(post1, post2));
 

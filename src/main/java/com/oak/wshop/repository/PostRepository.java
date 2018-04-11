@@ -10,5 +10,5 @@ import com.oak.wshop.model.Post;
 @Repository
 public interface PostRepository extends MongoRepository<Post, String> {
 
-	List<Post> findByTitleContainingIgnoreCase(String text);
+	List<Post> findByTitleContainingIgnoreCase(String text); //Consulta na forma de QueryMethods
 }

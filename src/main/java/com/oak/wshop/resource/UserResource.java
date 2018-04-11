@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -67,5 +68,12 @@ public class UserResource {
 	public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
 		Optional<User> user = service.findByID(id);
 		return ResponseEntity.ok().body(user.get().getPosts());
+	}
+	
+	
+	
+	@RequestMapping(method=RequestMethod.GET, value="/namesearch")
+	public List<User> findByNamesUsers(@RequestParam(value="nome",defaultValue="") String nome){
+		return service.findByNamesUsers(nome);
 	}
 }

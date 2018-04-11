@@ -16,7 +16,7 @@ import com.oak.wshop.resource.util.URL;
 import com.oak.wshop.service.PostService;
 
 @RestController
-@RequestMapping(value = "posts")
+@RequestMapping(value = "/posts")
 public class PostResource {
 
 	@Autowired

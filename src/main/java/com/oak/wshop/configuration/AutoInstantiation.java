@@ -50,8 +50,9 @@ public class AutoInstantiation implements CommandLineRunner {
 		CommentDTO c1 = new CommentDTO("Boa viagem mano!", sdf.parse("21/03/2018 20:10:25"), new AuthorDTO(mau));
 		CommentDTO c2 = new CommentDTO("Aproveite!!!", sdf.parse("23/03/2018 11:10:25"), new AuthorDTO(fran));
 		CommentDTO c3 = new CommentDTO("Aproveite huhuu!!!", sdf.parse("22/03/2018 22:10:25"), new AuthorDTO(mau));
-		post1.getComments().addAll(Arrays.asList(c1, c2));
-		post2.getComments().addAll(Arrays.asList(c3));
+		
+//		post1.getComments().addAll(Arrays.asList(c1, c2));
+//		post2.getComments().addAll(Arrays.asList(c3));
 
 		postRepository.saveAll(Arrays.asList(post1, post2));
 

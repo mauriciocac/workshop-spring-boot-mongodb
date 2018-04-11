@@ -18,9 +18,13 @@ public class PostService {
 	public Optional<Post> findPost(String id) {
 		return postRepository.findById(id);
 	}
-	
-	public List<Post> findByTitle(String text){
+
+	public List<Post> findByTitle(String text) {
 		return postRepository.findByTitleContainingIgnoreCase(text);
+	}
+
+	public List<Post> searchWordForDate(String text) {
+		return postRepository.searchWordForDate(text);
 	}
 
 }

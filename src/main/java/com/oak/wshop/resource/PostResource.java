@@ -35,4 +35,10 @@ public class PostResource {
 
 		return ResponseEntity.ok().body(list);
 	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/textsearch")
+	public ResponseEntity<List<Post>> searchWordForDate(@RequestParam(value = "text", defaultValue = "") String text) {
+		List<Post> list = postService.searchWordForDate(text);
+		return ResponseEntity.ok().body(list);
+	}
 }
